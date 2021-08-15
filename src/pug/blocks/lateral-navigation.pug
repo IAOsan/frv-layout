@@ -1,0 +1,39 @@
+.lateral-navigation
+   .content.p-4
+      ul.nav.flex-column
+         li.nav-item
+            a.nav-link.btn-success.btn-lg.px-4.mb-3.d-inline-block(href="#") Vende en frv
+         li.nav-item
+            a.nav-link.pl-0.text-secondary(href="#") Registrarse
+         li.nav-item
+            a.nav-link.pl-0.text-secondary(href="#") Vende en fvr
+      button.btn.btn-block.pl-0.d-flex.align-items-center.justify-content-between.text-secondary(type="button" data-toggle="collapse" data-target="#submenu-categories")
+         span Explora las categorías
+         i.fas.fa-angle-down.text-secondary
+      #submenu-categories.collapse.u-transition-s.pl-3
+         +nav('flex-column', 'text-secondary'
+            , ['#', 'diseño gráfico']
+            , ['#', 'marketing digital']
+            , ['#', 'escritura y traducciones']
+            , ['#', 'video y animación']
+            , ['#', 'música y audio']
+            , ['#', 'programación']
+            , ['#', 'negocios']
+            , ['#', 'estilo de vida']
+            )
+      button.btn.btn-block.pl-0.d-flex.align-items-center.justify-content-between.text-secondary(type="button" data-toggle="collapse" data-target="#submenu-categories2")
+         span Explora las categorías
+         i.fas.fa-angle-down.text-secondary
+      #submenu-categories2.collapse.u-transition-s.pl-3
+         +nav('flex-column', 'text-secondary'
+            , ['#', 'descubre']
+            , ['#', 'guías']
+            , ['#', 'learn']
+            , ['#', 'creador de logos']
+            , ['#', 'comunidad']
+            , ['#', 'podcast']
+            , ['#', 'blog']
+            )
+      a.btn.text-success.font-weight-bold.pl-0(href="#") Fvr PRO
+      h4.h6.font-weight-bold.py-3.mt-4.separator General
+      a.btn.pl-0.text-secondary(href="index.html") Inicio

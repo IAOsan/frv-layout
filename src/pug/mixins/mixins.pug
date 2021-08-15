@@ -1,0 +1,44 @@
+   
+mixin nav(navclass="", linkclass="", ...items)
+   ul.nav(class=navclass)
+      each item in items
+         li.nav-item
+            a.nav-link.text-capitalize(class=linkclass href=`${item[0]}`) #{item[1]}
+      if block 
+         block         
+mixin market-category(icon="brush", title="Titulo")
+   span(class=`icon ${icon}`)
+   h3.text-capitalize.heading #{title}
+   if block
+      block
+   else
+      p.mt-4.description SIN DESCRIPCION
+mixin service(desc="Descripcion",highlight="Resaltado", classname="")
+   .service.text-white(class=classname)
+      p.description #{desc} 
+         strong #{highlight}
+mixin carousel(id="idAqui",...slides)
+   .carousel.slide.bg-white(data-ride="carousel" id=id)
+      ol.carousel-indicators
+         each slide, index in slides
+            li(data-target=`#${id}` data-slide-to=index class=`${index === 0 ? 'active':''}`)
+      .carousel-inner
+         each slide,index in slides
+            .carousel-item.testimonial(class=`${index === 0 ? 'active':''}`)
+               .row.align-items-center
+                  .col-lg-5.p-5.p-lg-0.pl-lg-5
+                     h4.font-weight-bold #{slide.title}
+                     blockquote.quote
+                        i "#{slide.quote}"
+                     p 
+                        small #{slide.author}
+                  .col-lg-7
+                     img.w-100.h-100(src=`assets/img/${slide.img}`, alt=`Diapositiva ${index+1}`)
+mixin guide-card(link="#", img="blog1.jpg", title="Titulo", text="Descripcion")
+   a.text-decoration-none.text-dark(href=link) 
+      .card
+         img.card-img-top(src=`assets/img/${img}`, alt="")
+         .card-body
+            h4.card-title.font-weight-bold #{title}
+            p.card-text #{text}
+

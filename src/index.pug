@@ -1,0 +1,111 @@
+extends ./pug/templates/template
+block home
+   main
+      .hero
+         .container.text-white
+            .row.justify-content-center.align-items-center
+               .col-lg-8.col-md-10.text-center.content
+                  h1.heading No solo sueñes, hazlo
+                  p Servicios freelancer para empresarios
+                  form.mt-5(action="#")
+                     .input-group.input-group-lg
+                        input.form-control(type="text" placeholder="¿Que servicios buscas?" required)
+                        .input-group-append
+                           button.btn.btn-success.px-md-5 Buscar
+      section.marketplace.pt-5.pb-5.pb-lg-3.bg-white
+         h2.text-center.font-weight-bold.heading-section Explora el Marketplace
+         p.text-center Inspirate para construir tu negocio
+         .container-fluid.mt-5
+            .row
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('brush', 'diseño grafico')
+                     p.mt-4.description Logotipos, flyers, tarjetas de presentación  más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('bubble', 'marketing digital')
+                     p.mt-4.description Campañas, videos y sobre todo, ventas!
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('note', 'escritura y traducciones')
+                     p.mt-4.description Resumenes, entradas de blog, traducciones y más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('camera', 'video & animación')
+                     p.mt-4.description Animación de logotipos, comerciales, presentaciones y más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('micro', 'musica & audio')
+                     p.mt-4.description Canciones, comerciales y mucho más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('brackets', 'programación')
+                     p.mt-4.description WordPress, aplicaciones web, tiendas virtuales y más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('line', 'negocios')
+                     p.mt-4.description Asistentes virtuales, análisis de mercados, planes de negocios y más
+               .col-lg-3.col-sm-6.category.text-center
+                  +market-category('wine', 'estilo de vida')
+                     p.mt-4.description Cursos en linea, mentoría, consejos, creación de equipos y más
+      .bg-dark.py-5
+         .container.py-4
+            .row.align-items-center
+               .col-lg-6.text-white.py-4.text-center.text-lg-left
+                  h2.heading-section El Nuevo fvr PRO
+                  p Altamente probado.Alto nivel.Alta demanda.
+                  a.btn.btn-outline-light(href="#") Leer más
+               .col-lg-6
+                  a.btn.w-100(href="#" data-toggle="modal" data-target="#modal-fvrPRO" title="Haz click para ver el video sobre frv PRO") 
+                     img.img-fluid(src="assets/img/fvr_pro.png", alt="Haz click para ver el video sobre frv PRO")
+                  #modal-fvrPRO.modal.fade(tabindex="-1" aria-labelledby="Video fvr PRO" aria-hidden="true")
+                     .modal-dialog.modal-dialog-centered.modal-dialog-lg
+                        .modal-content
+                           .embed-responsive.embed-responsive-16by9
+                              video.embed-responsive-item(src="assets/video/Social Media - 1360.mp4" controls autoplay loop) 
+      section.py-5
+         h2.heading-section.text-center Primeros Pasos
+         p.text-center Sea cual sea tu meta, puedes empezar por aquí
+         .container.mt-5
+            .row.justify-content-between
+               +service('Contruye tu empresa', 'crea tu logo','logo')
+               +service('Llega a más clientes con', 'social media','social')
+               +service('Comparte tu mensaje', 'con un audio','audio')
+               +service('LLega a mas países con', 'traducciones','translate')
+               +service('Personaliza tu sitio con', 'wordPress','code')
+      .bg-dark.py-5
+         .container.py-lg-5
+            .row.text-center.text-white.align-item-center
+               .col-lg-4.mb-4.mb-lg-0
+                  h3.font-weight-light Tus 
+                     strong.font-weight-bold Términos
+                  p Contrata los servicios que necesites de acuerdo a tu presupuesto.
+               .col-lg-4.mb-4.mb-lg-0
+                  h3.font-weight-light Tus 
+                     strong.font-weight-bold Tiempos
+                  p Encuentra servicios basados en tus necesidades y en tus tiempos.
+               .col-lg-4
+                  h3.font-weight-light Tus 
+                     strong.font-weight-bold Seguridad
+                  p Tu pago siempre es seguro, fvr está hecho de forma muy segura.
+      .testimonials
+         .container.py-5
+            +carousel('slider-testimonials'
+            ,{title:'Gran Servicio', quote:'Un servicio muy profesional, rápido a un excelente costo 1', author: 'Andrea De Marco, fundadora de diseño De Marco', img: 'slide1.jpg'}
+            ,{title:'Gran Servicio 2', quote:'Un servicio muy profesional, rápido a un excelente costo 2', author: 'Andrea De Marco, fundadora de diseño De Marco 2', img: 'slide1.jpg'}
+            ,{title:'Gran Servicio 3', quote:'Un servicio muy profesional, rápido a un excelente costo 3', author: 'Andrea De Marco, fundadora de diseño De Marco 3', img: 'slide1.jpg'}
+            )
+      section.py-5
+         h2.heading-section.text-center Guías de Fvr
+         p.text-center Como usar fvr para crecer tu negocio
+         .container.mt-5
+            .row
+               .col-lg-4.col-md-6.mb-4.mb-lg-0
+                  +guide-card('#'
+                  , 'blog1.jpg'
+                  , 'Como crear un Sitio Web'
+                  , 'Aprende a crear un sitio web con esta guía')
+               .col-lg-4.col-md-6.mb-4.mb-lg-0
+                  +guide-card('#'
+                  , 'blog2.jpg'
+                  , 'Como crear un Sitio Web para tu negocio'
+                  , 'Aprende a crear una app con esta guía')
+               .col-lg-4
+                  +guide-card('#'
+                  , 'blog3.jpg'
+                  , 'Como crear una marca fuerte'
+                  , 'Guía con todo lo necesario para diferenciar tu marca de la competencia')
+   

@@ -1,9 +1,21 @@
 {
-  "name": "fvr",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "dev": "browser-sync start --server 'dist' --files 'dist' --no-open"
-  }
+	"name": "fvr",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"compile-pug": "pug src/index.pug --basedir /src --out ./",
+		"compile-pug:watch": "pug --watch src/index.pug --basedir /src --out ./ --pretty",
+		"compile-sass": "sass src/main.scss ./css/main.css --style=compressed --no-source-map",
+		"compile-sass:watch": "sass src/main.scss ./css/main.css --watch --style=expanded",
+		"live-server": "browser-sync -w --no-open",
+		"start": "npm run compile-pug && npm run compile-sass && npm run live-server",
+		"dev": "concurrently \"npm run compile-pug:watch\" \"npm run compile-sass:watch\" \"npm run live-server\""
+	},
+	"devDependencies": {
+		"browser-sync": "3.0.2",
+		"concurrently": "8.2.2",
+		"pug-cli": "1.0.0-alpha6",
+		"sass": "1.70.0"
+	}
 }

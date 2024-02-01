@@ -1,37 +1,39 @@
-/* -------------------------------------------------------------------------- */
-/*                                  constants                                 */
-/* -------------------------------------------------------------------------- */
-const lateral_menu = document.querySelector('.lateral-navigation');
-const lateral_menu_btn = document.querySelector('.lateral-navigation-btn');
-const header_scroll = document.querySelector('.header-scroll');
-const top_height = document.querySelector('.hero').offsetHeight - 50;
+const navbar = {
+   classname: 'show',
+   scrolling: function (e, height) {
+      const element = document.querySelector(`.${e}`);
+      const offsetY = pageYOffset;
+
+      element.classList.toggle(`${this.classname}`, offsetY >= height);
+   },
+   toggleClass: function (e) {
+      e.classList.toggle(`${this.classname}`);
+   },
+   removeClass: function (e) {
+      e.classList.remove(`${this.classname}`);
+   },
+   toggleMenu: function (elmnt, btn) {
+      const element = document.querySelector(`.${elmnt}`);
+      const button = document.querySelector(`.${btn}`);
+      // add class by clicking
+      button.addEventListener('click', () => this.toggleClass(element), false);
+      // remove class only if the target contains the class element
+      element.addEventListener(
+         'click',
+         (e) =>
+            e.target.classList[0] == `${elmnt}` && this.removeClass(element),
+         false
+      );
+   },
+};
+const heroheight = document.querySelector(`.hero`).offsetHeight - 50;
+
 /* -------------------------------------------------------------------------- */
 /*                                   events                                   */
 /* -------------------------------------------------------------------------- */
-// add class, click on lateral menu
-lateral_menu_btn.addEventListener(
-   'click',
-   () => {
-      lateral_menu.classList.toggle('show');
-   },
-   false
-);
-// remove class, click on the lateral menu only
-lateral_menu.addEventListener(
-   'click',
-   function (e) {
-      if (e.target.classList.contains('lateral-navigation')) {
-         this.classList.remove('show');
-      }
-   },
-   false
-);
-// changes classes in scroll for navigation
+navbar.toggleMenu('lateral-navigation', 'lateral-navigation-btn');
 window.addEventListener(
    'scroll',
-   (e) => {
-      const offsetY = pageYOffset;
-      header_scroll.classList.toggle(`show`, offsetY >= top_height);
-   },
+   () => navbar.scrolling('header-scroll', heroheight),
    false
 );
